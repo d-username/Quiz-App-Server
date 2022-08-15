@@ -67,19 +67,19 @@ router.post('/quiz', async (req, res, next) => {
   }
 });
 
-// router.delete('/products/:id', async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     const deletedProduct = await prisma.product.delete({
-//       where: {
-//         id: Number(id),
-//       },
-//     });
-//     res.json(deletedProduct);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+router.delete('/quiz/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deletedQuiz = await prisma.quiz.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+    res.json(deletedQuiz);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // router.patch('/products/:id', async (req, res, next) => {
 //   try {
