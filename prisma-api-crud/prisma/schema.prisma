@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
 }
 
 datasource db {
@@ -23,8 +24,8 @@ model Question {
   updatedAt DateTime @default(now())
   answers   Answer[]
 
-  Quiz   Quiz? @relation(fields: [quizId], references: [id])
-  quizId Int?
+  quiz   Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  quizId Int
 }
 
 model Answer {
@@ -34,6 +35,6 @@ model Answer {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @default(now())
 
-  Question   Question? @relation(fields: [questionId], references: [id])
-  questionId Int?
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId Int
 }

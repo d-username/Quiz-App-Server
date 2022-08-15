@@ -6,14 +6,14 @@ const prisma = new PrismaClient();
 router.get('/quiz', async (req, res, next) => {
   try {
     const quizes = await prisma.quiz.findMany({
-      include: { questions: true },
+      include: {
+        questions: {
+          include: { answers: true },
+        },
+      },
     });
 
-    const questions = await prisma.question.findMany({
-      include: { answers: true },
-    });
-
-    res.json({ quizes, questions });
+    res.json({ quizes });
   } catch (error) {
     next(error);
   }
