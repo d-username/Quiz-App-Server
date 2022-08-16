@@ -19,15 +19,15 @@ router.get('/quiz', async (req, res, next) => {
   }
 });
 
-// router.get('/products/:id', async (req, res, next) => {
+// router.get('/quiz/:id', async (req, res, next) => {
 //   try {
 //     const { id } = req.params;
-//     const product = await prisma.product.findUnique({
+//     const quiz = await prisma.quiz.findUnique({
 //       where: {
 //         id: Number(id),
 //       },
 //     });
-//     res.json(product);
+//     res.json(quiz);
 //   } catch (error) {
 //     next(error);
 //   }
@@ -88,16 +88,16 @@ router.delete('/quiz/:id', async (req, res, next) => {
   }
 });
 
-// router.patch('/products/:id', async (req, res, next) => {
+// router.patch('/quiz/:id', async (req, res, next) => {
 //   try {
 //     const { id } = req.params;
-//     const product = await prisma.product.update({
+//     const quiz = await prisma.quiz.update({
 //       where: {
 //         id: Number(id),
 //       },
 //       data: req.body,
 //     });
-//     res.json(product);
+//     res.json(quiz);
 //   } catch (error) {
 //     next(error);
 //   }
