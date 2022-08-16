@@ -103,4 +103,36 @@ router.delete('/quiz/:id', async (req, res, next) => {
 //   }
 // });
 
+router.post('/user', async (req, res, next) => {
+  const data = req.body;
+
+  try {
+    const newUser = await prisma.user.create({
+      data: {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      },
+    });
+
+    res.json(newUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/user/:email', async (req, res, next) => {
+  try {
+    const { email } = req.params;
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
